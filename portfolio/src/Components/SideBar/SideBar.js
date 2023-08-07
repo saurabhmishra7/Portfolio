@@ -12,19 +12,14 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 
 export default function SideBar() {
-  const [state, setState] = React.useState({
-    top: false,
-    left: true,
-    bottom: false,
-    right: false,
-  });
+  const [state, setState] = React.useState(false);
 
-  const toggleDrawer = (anchor, open) => (event) => {
+  const toggleDrawer = () => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
 
-    setState({ ...state, [anchor]: open });
+    setState(true);
   };
 
   const list = (anchor) => (
@@ -33,6 +28,7 @@ export default function SideBar() {
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
+      className="sidebar"
     >
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
@@ -64,18 +60,18 @@ export default function SideBar() {
 
   return (
     <div>
-      {['left', 'right', 'top', 'bottom'].map((anchor) => (
-        <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer('left', true)}>{anchor}</Button>
+
+        <React.Fragment >
+          {/* <Button onClick={toggleDrawer('left', true)}>{"left"}</Button> */}
           <Drawer
             anchor='left'
-            open={state["left"]}
-            onClose={toggleDrawer(anchor, false)}
+            open={true}
+            onClose={toggleDrawer("left", false)}
+            BackdropProps={{ style: { backgroundColor: 'transparent' } }} 
           >
-            {list(anchor)}
+            {list("left")}
           </Drawer>
         </React.Fragment>
-      ))}
     </div>
   );
 }

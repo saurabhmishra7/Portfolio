@@ -1,5 +1,5 @@
 import React from 'react'
-import GreenDot from './GreenDot'
+import GreenDot from '../GreenDot/GreenDot'
 
 
 const Navbar = () => {

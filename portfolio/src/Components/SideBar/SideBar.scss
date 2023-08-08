@@ -1,3 +1,19 @@
 .sidebar {
     z-index: -1;
 }
+
+.drawer {
+    background-color: #1C1B23;
+    height: 100vh;
+    color: white;
+    top: 70px;
+    padding-top: 40px !important;
+}
+
+.drawer-item {
+    cursor: pointer;
+}
+
+.drawer-icon {
+    color: white;
+}

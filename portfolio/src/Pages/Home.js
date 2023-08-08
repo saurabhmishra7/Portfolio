@@ -7,8 +7,10 @@ const Home = () => {
 
     return (
         <div>
-        <Navbar/>
-        <SideBar/>
+            <Navbar/>
+            <div style={{marginTop:"40px", zIndex:-100}}>
+                <SideBar/>
+            </div>
         </div>
     )
 }

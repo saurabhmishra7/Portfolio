@@ -1,77 +1,59 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import React from 'react';
+import { Drawer, List, ListItem, ListItemIcon, ListItemText, Toolbar } from '@mui/material';
+import HomeIcon from '@mui/icons-material/Home';
+import WhatshotIcon from '@mui/icons-material/Whatshot';
+import CodeIcon from '@mui/icons-material/Code';
+import VideocamIcon from '@mui/icons-material/Videocam';
+import './SideBar.scss'
 
-export default function SideBar() {
-  const [state, setState] = React.useState(false);
+const drawerWidth = 240;
 
-  const toggleDrawer = () => (event) => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
-    }
-
-    setState(true);
-  };
-
-  const list = (anchor) => (
-    <Box
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-      className="sidebar"
-    >
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
-
+const Sidebar = () => {
   return (
-    <div>
-
-        <React.Fragment >
-          {/* <Button onClick={toggleDrawer('left', true)}>{"left"}</Button> */}
-          <Drawer
-            anchor='left'
-            open={true}
-            onClose={toggleDrawer("left", false)}
-            BackdropProps={{ style: { backgroundColor: 'transparent' } }} 
-          >
-            {list("left")}
-          </Drawer>
-        </React.Fragment>
+    <div style={{ display: 'flex' , position:"absolute", top:"40px", zIndex:-1}}>
+      <Drawer
+        variant="permanent"
+        className='drawer'
+        sx={{
+          width: drawerWidth,
+          flexShrink: 0,
+          '& .MuiDrawer-paper': {
+            width: drawerWidth,
+          },
+        }}
+        anchor="left"
+        style={{backgroundColor:"#1C1B23"}}
+      >
+        {/* <Toolbar /> */}
+        <List className='drawer'>
+          <ListItem className='drawer-item' >
+            <ListItemIcon>
+              <HomeIcon className='drawer-icon' />
+            </ListItemIcon>
+            <ListItemText primary="Home" />
+          </ListItem>
+          <ListItem className='drawer-item' >
+            <ListItemIcon>
+              <WhatshotIcon className='drawer-icon' />
+            </ListItemIcon>
+            <ListItemText primary="Trending" />
+          </ListItem>
+          <ListItem className='drawer-item'>
+            <ListItemIcon>
+              <CodeIcon className='drawer-icon' />
+            </ListItemIcon>
+            <ListItemText primary="Snippets" />
+          </ListItem>
+          <ListItem className='drawer-item'>
+            <ListItemIcon>
+              <VideocamIcon className='drawer-icon' />
+            </ListItemIcon>
+            <ListItemText primary="Videos" />
+          </ListItem>
+        </List>
+      </Drawer>
     </div>
   );
-}
+};
+
+export default Sidebar;

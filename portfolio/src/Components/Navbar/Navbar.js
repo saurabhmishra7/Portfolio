@@ -13,6 +13,8 @@ const Navbar = () => {
                   display: "flex",
                   height: "70px",
                   width: "100%",
+                  position: "relative",
+                  zIndex: "1"
               }}>
                   <div className='px-3' style={{ display: "flex", width: "200px" }}>
                       <GreenDot />

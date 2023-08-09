@@ -4,13 +4,17 @@ import HomeIcon from '@mui/icons-material/Home';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
 import CodeIcon from '@mui/icons-material/Code';
 import VideocamIcon from '@mui/icons-material/Videocam';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import './SideBar.scss'
 
 const drawerWidth = 240;
 
 const Sidebar = () => {
   return (
-    <div style={{ display: 'flex' , position:"absolute", top:"40px", zIndex:-1}}>
+    <div style={{ position:"relative", zIndex: -1}}>
       <Drawer
         variant="permanent"
         className='drawer'
@@ -19,13 +23,13 @@ const Sidebar = () => {
           flexShrink: 0,
           '& .MuiDrawer-paper': {
             width: drawerWidth,
+            backgroundColor: "#1C1B23 !important",
           },
         }}
-        anchor="left"
-        style={{backgroundColor:"#1C1B23"}}
       >
         {/* <Toolbar /> */}
-        <List className='drawer'>
+        <div className="pt-5">
+        <List className="drawer pt-5">
           <ListItem className='drawer-item' >
             <ListItemIcon>
               <HomeIcon className='drawer-icon' />
@@ -50,7 +54,35 @@ const Sidebar = () => {
             </ListItemIcon>
             <ListItemText primary="Videos" />
           </ListItem>
+          <ListItem className='drawer-item'>
+            <ListItemText primary="Socials" className="font-weight-bold"/>
+          </ListItem>
+          <ListItem className='drawer-item'>
+            <ListItemIcon>
+              <InstagramIcon className='drawer-icon' />
+            </ListItemIcon>
+            <ListItemText primary="Instagram" />
+          </ListItem>
+          <ListItem className='drawer-item'>
+            <ListItemIcon>
+              <GitHubIcon className='drawer-icon' />
+            </ListItemIcon>
+            <ListItemText primary="Github" />
+          </ListItem>
+          <ListItem className='drawer-item'>
+            <ListItemIcon>
+              <YouTubeIcon className='drawer-icon' />
+            </ListItemIcon>
+            <ListItemText primary="Youtube" />
+          </ListItem>
+          <ListItem className='drawer-item'>
+            <ListItemIcon>
+              <LinkedInIcon className='drawer-icon' />
+            </ListItemIcon>
+            <ListItemText primary="LinkedIn" />
+          </ListItem>
         </List>
+        </div>
       </Drawer>
     </div>
   );

@@ -7,7 +7,10 @@ import { CardActionArea } from '@mui/material';
 
 export default function Griddemo() {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card 
+    sx={{ maxWidth: 345 }}
+    style={{marginTop:"20px"}}
+    >
       <CardActionArea>
         <CardMedia
           component="img"

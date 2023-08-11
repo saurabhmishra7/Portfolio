@@ -8,28 +8,43 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import {makeStyles} from '@mui/styles';
 import './SideBar.scss'
 
 const drawerWidth = 240;
 
+const useStyles = makeStyles((theme) => ({
+  drawer : {
+    position : "static",
+    zIndex:-1
+  }
+}))
+
 const Sidebar = () => {
+
+  const classes = useStyles();
+
   return (
-    <div style={{ position:"relative", zIndex: -1}}>
+
       <Drawer
         variant="permanent"
-        className='drawer'
+        // className='drawer'
+        classes={{
+          paper : classes.drawer
+        }}
         sx={{
           width: drawerWidth,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             backgroundColor: "#1C1B23 !important",
+            position:"unset"
           },
         }}
       >
         {/* <Toolbar /> */}
         <div className="pt-5">
-        <List className="drawer pt-5">
+        <List className="drawer pt-5" style={{position:"fixed"}}>
           <ListItem className='drawer-item' >
             <ListItemIcon>
               <HomeIcon className='drawer-icon' />
@@ -84,7 +99,6 @@ const Sidebar = () => {
         </List>
         </div>
       </Drawer>
-    </div>
   );
 };
 
